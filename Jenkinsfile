@@ -11,7 +11,7 @@ pipeline {
         }
 
         stage('Build Docker Image') {
-            steps { sh 'docekr build -t usermanagement-application-image:latest .' }
+            steps { sh 'docker build -t usermanagement-application-image:latest .' }
         }
 
         stage('Docker Login + Push') {
