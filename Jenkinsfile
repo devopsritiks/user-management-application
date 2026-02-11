@@ -14,6 +14,21 @@ pipeline {
             steps { sh 'docekr build -t usermanagement-application-image:latest .' }
         }
 
+        stage('Docker Login + Push') {
+            steps {
+                withCredentials([usernamePassword(credentialsId: 'docker-hub-credentials',
+                 usernameVariable: 'DOCKERHUB_USER',
+                 passwordVariable: 'DOCKERHUB_PASS')]) {
+
+                    sh '''
+                        echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USER" --password-stdin
+                        docker tag usermanagement-application-image:latest "$DOCKERHUB_USER/usermanagement:latest"
+                        docker push "$DOCKER_USER/usermanagement:latest"
+                    '''
+                 }
+            }
+        }
+
         stage('Deploy with Docker Compose') {
             steps {
                 sh 'docker compose up -d --build'
