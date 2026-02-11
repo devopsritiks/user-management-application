@@ -23,7 +23,7 @@ pipeline {
                     sh '''
                         echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USER" --password-stdin
                         docker tag usermanagement-application-image:latest "$DOCKERHUB_USER/usermanagement:latest"
-                        docker push "$DOCKER_USER/usermanagement:latest"
+                        docker push "$DOCKERHUB_USER/usermanagement:latest"
                     '''
                  }
             }
