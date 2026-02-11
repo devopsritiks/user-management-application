@@ -7,7 +7,7 @@ pipeline {
         }
 
         stage('Build Maven (Skip Tests)') {
-            setps { sh 'mvn -DskipTests clean package' }
+            steps { sh 'mvn -DskipTests clean package' }
         }
 
         stage('Build Docker Image') {
