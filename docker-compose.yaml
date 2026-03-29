@@ -21,7 +21,7 @@ services:
      - "3307:3306"
     environment:
       MYSQL_ROOT_PASSWORD: Root@123
-      MYSQL_DATABSE: userdb
+      MYSQL_DATABASE: userdb
     volumes:
      - mysql-data:/var/lib/mysql
     networks:
