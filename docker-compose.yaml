@@ -1,6 +1,6 @@
 services:
   usermanagement-application:
-    image: usermanagemnet-application-image:latest
+    image: usermanagement-application-image:latest
     build:
      context: .
      dockerfile: Dockerfile
